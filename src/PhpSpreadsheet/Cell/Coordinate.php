@@ -197,6 +197,14 @@ abstract class Coordinate
         $rangeEnd = self::coordinateFromString($rangeB);
 
         // Translate column into index
+        if (isset($rangeStart[0][0]) && $rangeStart[0][0] === '$') {
+            $rangeStart[0] = ltrim($rangeStart[0], '$');
+        }
+
+        if (isset($rangeEnd[0][0]) && $rangeEnd[0][0] === '$') {
+            $rangeEnd[0] = ltrim($rangeEnd[0], '$');
+        }
+
         $rangeStart[0] = self::columnIndexFromString($rangeStart[0]);
         $rangeEnd[0] = self::columnIndexFromString($rangeEnd[0]);
 
